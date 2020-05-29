@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29521.150
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StackExchange.Redis.Branch", "src\StackExchange.Redis.Branch\StackExchange.Redis.Branch.csproj", "{70AC12BB-AF7E-442E-A46D-82887BE47BE2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{782EDB66-3262-40E5-A606-9C3855F88F37}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StackExchange.Redis.Branch.Tests", "src\StackExchange.Redis.Branch.Tests\StackExchange.Redis.Branch.Tests.csproj", "{B6566A1E-E115-49B6-A747-4A2B511B2CE3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{70AC12BB-AF7E-442E-A46D-82887BE47BE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70AC12BB-AF7E-442E-A46D-82887BE47BE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70AC12BB-AF7E-442E-A46D-82887BE47BE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70AC12BB-AF7E-442E-A46D-82887BE47BE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6566A1E-E115-49B6-A747-4A2B511B2CE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6566A1E-E115-49B6-A747-4A2B511B2CE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6566A1E-E115-49B6-A747-4A2B511B2CE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6566A1E-E115-49B6-A747-4A2B511B2CE3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B6566A1E-E115-49B6-A747-4A2B511B2CE3} = {782EDB66-3262-40E5-A606-9C3855F88F37}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F6F3CD3F-B883-4536-8E86-50E7D9677264}
+	EndGlobalSection
+EndGlobal
