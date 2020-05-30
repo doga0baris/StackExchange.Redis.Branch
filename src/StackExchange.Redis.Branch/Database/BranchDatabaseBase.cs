@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StackExchange.Redis.Branch.Repository
+namespace StackExchange.Redis.Branch.Database
 {
     /// <summary>
     /// Base abstract class for redis repositories. Any overriden function must call base function. Otherwise unexpected behavior may be happened.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class RedisRepositoryBase<T> : IRedisRepository<T> where T : RedisEntity, new()
+    public abstract class BranchDatabaseBase<T> : IBranchDatabase<T> where T : RedisEntity, new()
     {
         public static string BRANCH_DATA = "BRANCH_DATA";
 
@@ -20,7 +20,7 @@ namespace StackExchange.Redis.Branch.Repository
         private List<IRedisBranch<T>> _branches;
         protected IReadOnlyCollection<IRedisBranch<T>> Branches => _branches?.AsReadOnly();
 
-        public RedisRepositoryBase(ConnectionMultiplexer redisConnectionMultiplexer)
+        public BranchDatabaseBase(ConnectionMultiplexer redisConnectionMultiplexer)
         {
             _redisConnectionMultiplexer = redisConnectionMultiplexer;
             _redisDatabase = _redisConnectionMultiplexer.GetDatabase();
@@ -42,7 +42,7 @@ namespace StackExchange.Redis.Branch.Repository
         public virtual async Task AddAsync(T entity)
         {
             await _redisDatabase.HashSetAsync(entity);
-            //await _mediator.Publish(new RedisEntityEvent(entity, this.GetType(), RedisEntityEventTypeEnum.Added));
+            await UpdateBranchesAsync(entity, RedisEntityStateEnum.Added);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace StackExchange.Redis.Branch.Repository
         public virtual async Task UpdateAsync(T entity)
         {
             await _redisDatabase.HashSetAsync(entity);
-            //await _mediator.Publish(new RedisEntityEvent(entity, this.GetType(), RedisEntityEventTypeEnum.Updated));
+            await UpdateBranchesAsync(entity, RedisEntityStateEnum.Updated);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace StackExchange.Redis.Branch.Repository
         public virtual async Task<bool> DeleteAsync(T entity)
         {
             bool result = await _redisDatabase.KeyDeleteAsync(entity.GetRedisKey());
-            //await _mediator.Publish(new RedisEntityEvent(entity, this.GetType(), RedisEntityEventTypeEnum.Deleted));
+            await UpdateBranchesAsync(entity, RedisEntityStateEnum.Deleted);
             return result;
         }
 
@@ -80,7 +80,7 @@ namespace StackExchange.Redis.Branch.Repository
             if (entity != default)
             {
                 result = await _redisDatabase.KeyDeleteAsync(entity.GetRedisKey());
-                //await _mediator.Publish(new RedisEntityEvent(entity, this.GetType(), RedisEntityEventTypeEnum.Deleted));
+                await UpdateBranchesAsync(entity, RedisEntityStateEnum.Deleted);
             }
             return result;
         }
@@ -298,7 +298,7 @@ namespace StackExchange.Redis.Branch.Repository
         /// <param name="entity"></param>
         /// <param name="eventType"></param>
         /// <returns></returns>
-        public async Task UpdateBranchesAsync(T entity, RedisEntityStateEnum entityState)
+        private async Task UpdateBranchesAsync(T entity, RedisEntityStateEnum entityState)
         {
             switch (entityState)
             {

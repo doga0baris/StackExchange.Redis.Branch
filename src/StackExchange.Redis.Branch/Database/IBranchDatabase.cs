@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StackExchange.Redis.Branch.Repository
+namespace StackExchange.Redis.Branch.Database
 {
-    public interface IRedisRepository<T> where T : RedisEntity, new()
+    public interface IBranchDatabase<T> where T : RedisEntity, new()
     {
         Task AddAsync(T entity);
         Task UpdateAsync(T entity);
@@ -26,6 +26,5 @@ namespace StackExchange.Redis.Branch.Repository
         void AddBranch(IRedisBranch<T> branch);
         Task<bool> SetKeyExpireAsync(string id, TimeSpan timeSpan);
         Task<bool> SetKeyExpireAsync(T entity, TimeSpan timeSpan);
-        Task UpdateBranchesAsync(T entity, RedisEntityStateEnum eventState);
     }
 }

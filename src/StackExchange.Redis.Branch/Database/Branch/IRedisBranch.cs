@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace StackExchange.Redis.Branch.Repository
+namespace StackExchange.Redis.Branch.Database
 {
     public interface IRedisBranch<T> where T : RedisEntity, new()
     {

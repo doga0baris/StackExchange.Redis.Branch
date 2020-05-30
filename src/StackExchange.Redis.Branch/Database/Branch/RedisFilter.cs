@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace StackExchange.Redis.Branch.Repository
+namespace StackExchange.Redis.Branch.Database
 {
     /// <summary>
     /// Redis Filter. It filters entity before any group or sort operation. A branch can contains multiple filters. Filter doesn't effect redis key like groups or sort.

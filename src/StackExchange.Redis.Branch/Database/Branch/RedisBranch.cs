@@ -1,9 +1,11 @@
 ﻿using StackExchange.Redis.Branch.Entity;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
-namespace StackExchange.Redis.Branch.Repository
+namespace StackExchange.Redis.Branch.Database
 {
     /// <summary>
     /// Redis Branch. Branch contains filters, groups and a sort.

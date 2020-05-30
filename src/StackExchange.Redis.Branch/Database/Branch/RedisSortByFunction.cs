@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace StackExchange.Redis.Branch.Repository
+namespace StackExchange.Redis.Branch.Database
 {
     /// <summary>
     /// Redis Sort. It sorts entities by a function. Redis Key is function name. Sort is the last element of the branch and at most one sort can be in a branch.
@@ -27,7 +27,7 @@ namespace StackExchange.Redis.Branch.Repository
         {
             if (_redisKey == default)
             {
-                _redisKey = new BranchRedisKey(RedisKeyEnum.Sort, _functionName);
+                _redisKey = new BranchRedisKey(BranchRedisKeyEnum.Sort, _functionName);
             }
             return _redisKey;
         }

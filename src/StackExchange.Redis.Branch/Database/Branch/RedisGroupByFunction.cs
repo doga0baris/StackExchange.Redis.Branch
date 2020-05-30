@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace StackExchange.Redis.Branch.Repository.Branch
+namespace StackExchange.Redis.Branch.Database
 {
     /// <summary>
     /// Redis Group. It groups entities by a function. Redis Key is function name.

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace StackExchange.Redis.Branch.Repository
+namespace StackExchange.Redis.Branch.Database
 {
     /// <summary>
     /// Redis Sort. It sorts entities by a property. Redis Key is property name. Sort is the last element of the branch and at most one sort can be in a branch.

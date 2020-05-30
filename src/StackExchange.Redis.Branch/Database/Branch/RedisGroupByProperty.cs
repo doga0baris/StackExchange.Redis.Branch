@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace StackExchange.Redis.Branch.Repository
+namespace StackExchange.Redis.Branch.Database
 {
     /// <summary>
     /// Redis Group. It groups entities by a property. Redis Key is property name.
