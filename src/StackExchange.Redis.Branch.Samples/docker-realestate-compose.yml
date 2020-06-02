@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  realestate:
+    image: ${DOCKER_REGISTRY-}realestate
+    build:
+      context: .
+      dockerfile: src/StackExchange.Redis.Branch.Samples/RealEstate/Dockerfile
+
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
+    hostname: redis
+    container_name: redis
+
+  redis-commander:
+    container_name: redis-commander
+    hostname: redis-commander
+    image: rediscommander/redis-commander:latest
+    restart: always
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - "8081:8081"
